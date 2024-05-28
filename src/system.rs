@@ -1,12 +1,16 @@
 use std::collections::HashMap;
 use thiserror::Error;
-use crate::fluid::Fluid;
+use crate::{container::Container, fluid::Fluid};
 
 #[derive(Default)]
 pub struct FluidSimSystem{
     ///List of all fluid types 
     fluid_properties : Vec<Fluid>,
-    identifier_to_fluid_properties_index : HashMap<String,usize>
+    ///This map converts each fluid's unique identifier to its current index
+    identifier_to_fluid_properties_index : HashMap<String,usize>,
+    ///List contains all fluid containers that the system has to simulate
+    containers : Vec<Container>,
+
 }
 
 #[derive(Error, Debug)]

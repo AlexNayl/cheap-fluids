@@ -1,5 +1,5 @@
 [package]
-name = "cheap-fluids"
+name = "bevy_cheap_fluids"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,3 +7,11 @@ edition = "2021"
 
 [dependencies]
 thiserror = "1.0.60"
+
+[dependencies.bevy]
+version = "0.12"
+default-features = false
+features = [
+    "dynamic_linking",
+    "multi-threaded"
+]
