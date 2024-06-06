@@ -1,26 +1,23 @@
-
-
+pub mod default_fluids;
 
 #[derive(PartialEq, Clone, Debug)]
-pub struct Fluid{
-    /// Unique identifier to this chemical. Expressed in InChI standard version 1.
-    /// 
-    /// While the identifier could be theoretically any string, InChI standard notation is used to prevent the creation of duplicate chemicals
-    /// 
-    /// EG: Pure Water = InChI=1S/H2O/h1H2
-    pub identifier : String,
+pub enum MaterialState{
+    Solid,
+    Liquid,
+    Gas
 }
 
-impl Fluid {
-    fn pure_water() -> Self{
-        Fluid { 
-            identifier: "pure_water".to_string()
-        }
-    }
+#[derive(PartialEq, Clone, Debug)]
+///Used to define the properties of a fluid type. Should be instantiated once as a static per fluid type. Said static is then referenced by containers.
+pub struct FluidProperties{
+    state: MaterialState,
 }
 
-impl Default for Fluid{
-    fn default() -> Self {
-        Fluid::pure_water()
-    }
+#[bevy_trait_query::queryable]
+pub trait FluidComponent{
+    fn get_fluid_properties(&self) -> &'static FluidProperties;
+    fn get_quantity(&self) -> &f32;
 }
+
+
+
