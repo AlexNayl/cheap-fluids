@@ -10,7 +10,8 @@ pub enum MaterialState{
 #[derive(PartialEq, Clone, Debug)]
 ///Used to define the properties of a fluid type. Should be instantiated once as a static per fluid type. Said static is then referenced by containers.
 pub struct FluidProperties{
-    state: MaterialState,
+    pub state: MaterialState,
+    pub molar_mass : f32
 }
 
 #[bevy_trait_query::queryable]

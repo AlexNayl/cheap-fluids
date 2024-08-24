@@ -17,6 +17,7 @@ impl Plugin for DefaultFluidPlugin{
 //ICE
 pub static ICE_PROPERTIES : FluidProperties = FluidProperties{
     state: MaterialState::Solid,
+    molar_mass: 0.00180158
 };
 
 #[derive(Component)]
@@ -38,6 +39,7 @@ impl FluidComponent for Ice{
 //Water
 pub static WATER_PROPERTIES : FluidProperties = FluidProperties{
     state: MaterialState::Liquid,
+    molar_mass: 0.00180158
 };
 
 #[derive(Component)]
@@ -58,6 +60,7 @@ impl FluidComponent for Water{
 //Steam
 pub static STEAM_PROPERTIES : FluidProperties = FluidProperties{
     state: MaterialState::Gas,
+    molar_mass: 0.00180158
 };
 
 #[derive(Component)]
