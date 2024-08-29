@@ -29,6 +29,7 @@ impl FluidContainer {
         mut containers : Query<(&mut FluidContainer, &dyn FluidComponent)>,
         constants : Res<crate::ConstantsResource>
     ){
+        //TODO fix: this calculates all fluids for all containers, doesn't care which fluid is in which container
         //This system calculates the headless pressure for each container
         containers.par_iter_mut().for_each(|(mut container, fluids)|{
             // for each entity with a contain in it, sum up all the 

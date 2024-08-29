@@ -1,7 +1,8 @@
 use std::time::Duration;
-
+use bevy_cheap_fluids::fluid::default_fluids::Steam;
 use bevy::prelude::*;
 use bevy_cheap_fluids::fluid_container::FluidContainer;
+use bevy_cheap_fluids::fluid::FluidComponent;
 
 fn main(){
     let mut app = App::new();
@@ -17,7 +18,8 @@ fn startup_system(
     mut commands: Commands
 ){
     commands.spawn(
-        FluidContainer::new(1.0)
+        (FluidContainer::new(1.0),
+        Steam{quantity : 1.0})
     );
 }
 
@@ -31,7 +33,9 @@ fn oscillator(
 }
 
 fn change_vol_system(
-    time : Res<Time>
+    time : Res<Time>,
+    mut fluid_query : Query<(&dyn FluidComponent, &FluidContainer)>
 ){
+    let (fluid_component, fluid_container) = fluid_query.single_mut();
     println!("{}", oscillator(time.elapsed(), 1.0, 1.0, 1.0));
 }

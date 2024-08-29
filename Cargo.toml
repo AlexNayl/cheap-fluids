@@ -9,6 +9,7 @@ edition = "2021"
 thiserror = "1.0.60"
 bevy-trait-query = "0.5.1"
 bevy_egui = "0.27"
+derive_macros = { version = "0.1.0", path = "derive_macros" }
 
 [dependencies.bevy]
 version = "0.13"

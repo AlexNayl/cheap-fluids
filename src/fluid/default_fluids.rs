@@ -44,7 +44,7 @@ pub static WATER_PROPERTIES : FluidProperties = FluidProperties{
 
 #[derive(Component)]
 pub struct Water{
-    quantity : f32
+    pub quantity : f32
 }
 
 impl FluidComponent for Water{
@@ -65,7 +65,7 @@ pub static STEAM_PROPERTIES : FluidProperties = FluidProperties{
 
 #[derive(Component)]
 pub struct Steam{
-    quantity : f32
+    pub quantity : f32
 }
 
 impl FluidComponent for Steam{
