@@ -11,5 +11,5 @@ fn startup_integration_test(){
 }
 
 fn exit_system(mut app_exit_events: ResMut<Events<bevy::app::AppExit>>){
-    app_exit_events.send(bevy::app::AppExit);
+    app_exit_events.send(bevy::app::AppExit::Success);
 }

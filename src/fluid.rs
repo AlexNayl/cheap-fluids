@@ -1,3 +1,5 @@
+use bevy::prelude::Component;
+
 pub mod default_fluids;
 
 #[derive(PartialEq, Clone, Debug)]
@@ -13,11 +15,8 @@ pub struct FluidProperties{
     pub state: MaterialState,
     pub molar_mass : f32
 }
-
-#[bevy_trait_query::queryable]
-pub trait FluidComponent{
-    fn get_fluid_properties(&self) -> &'static FluidProperties;
-    fn get_quantity(&self) -> &f32;
+pub trait FluidComponent : Component + Default{
+    const PROPERTIES : FluidProperties;
 }
 
 
