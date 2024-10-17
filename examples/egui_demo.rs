@@ -2,13 +2,18 @@ use std::time::Duration;
 use bevy::prelude::*;
 use bevy_cheap_fluids::fluid_container::FluidContainer;
 use bevy_cheap_fluids::fluid::FluidComponent;
+use bevy_cheap_fluids::*;
+use bevy_egui::{egui, EguiContexts, EguiPlugin};
 
 fn main(){
     let mut app = App::new();
-    app.add_plugins(
-        DefaultPlugins
-    );
+    app.add_plugins((
+        DefaultPlugins,
+        FluidPlugin,
+        EguiPlugin
+    ));
     app.add_systems(Startup, startup_system);
+    app.add_systems(Update, update_system);
     app.run();
 }
 
@@ -18,6 +23,14 @@ fn startup_system(
     commands.spawn(
         FluidContainer::new(1.)
     );
+}
+
+fn update_system(
+    mut contexts: EguiContexts
+){
+    egui::Window::new("Hello").show(contexts.ctx_mut(), |ui| {
+        ui.label("world");
+    });
 }
 
 fn oscillator(
